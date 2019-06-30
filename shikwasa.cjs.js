@@ -56,7 +56,7 @@ function handleOptions(options) {
   if (!result) {
     options.fixed.type = CONFIG.fixed.type;
   }
-  options.transitionDuration = options.transitionDuration || CONFIG.transitionDuration;
+  options.transitionDuration = +options.transitionDuration || CONFIG.transitionDuration;
   options.themeColor = options.themeColor || CONFIG.themeColor;
   options.autoPlay = options.autoPlay || CONFIG.autoPlay;
   options.muted = options.muted || CONFIG.muted;
