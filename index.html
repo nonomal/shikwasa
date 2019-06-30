@@ -19,26 +19,25 @@
       html, body {
         margin: 0;
         padding: 0;
+      }
+      body {
         font: 18px/1.42 Open Sans, San Francisco, Pingfang SC, Hiragano, Helvetica Neue, Microsoft Yahei, sans-serif;
         color: #00869B;
         height: 100%;
       }
       header {
-        padding: 20px 0;
-      }
-      h1, h2 {
-        font-family: Open Sans, Helvetica Neue, sans-serif;
-      }
-      h1 {
-        font-size: 4em;
-        margin: 0;
+        margin: 20px 0;
       }
       h2 {
+        font-family: Open Sans, Helvetica Neue, sans-serif;
         font-weight: 300;
       }
       header .inner {
         display: flex;
         flex-flow: row wrap;
+      }
+      .title {
+        text-align: center;
       }
       .title svg {
         width: 256px;
@@ -53,6 +52,9 @@
         max-width: 680px;
         margin: 0 auto;
         padding: 0 20px;
+      }
+      .shk {
+        z-index: 99;
       }
       a {
         font-weight: 400;
@@ -76,8 +78,11 @@
         white-space: nowrap;
       }
       @media (max-width: 680px) {
-        .title svg {
-          width: 100%;
+        .title {
+          flex-basis: 100%;
+        }
+        .info {
+          text-align: center;
         }
         footer p {
           bottom: 70px;
@@ -88,8 +93,8 @@
   <body>
     <header>
       <div class="inner">
-        <h1 class="title" aria-hidden="true">
-          <svg width="512px" height="512px" viewbox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        <div class="title" aria-hidden="true">
+          <svg viewbox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
               <rect x="0" y="0" width="512" height="512"></rect>
@@ -104,9 +109,9 @@
                 fill="#00869B"></path>
             </g>
           </svg>
-        </h1>
+        </div>
         <div class="info">
-          <h2 class="subtitle">An web audio player born for <strong>podcasts</strong></h2>
+          <h2 class="subtitle">A web audio player born for <strong>podcasts</strong></h2>
           <a href="https://jessuni.github.io/shikwasa/">View on Github</a>
         </div>
       </div>
@@ -125,8 +130,7 @@
     const isMobile = /mobile/i.test(window.navigator.userAgent)
     const shk = new Shikwasa({
       fixed: {
-        value: isMobile,
-        position: 'bottom',
+        type: 'auto',
       },
       container: document.querySelector('.container'),
       audio: {
