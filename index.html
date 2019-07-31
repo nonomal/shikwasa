@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="author" content="Jessie">
+  <meta name="author" content="Jessie Ji">
   <meta name="keyword" content="podcast,audio,player,html5audio,shikwasa,playback">
   <meta property="og:title" content="Shikwasa">
   <meta property="og:description" content="a web audio player born for podcast">
@@ -22,52 +22,42 @@
       margin: 0;
       padding: 0;
     }
-
     body {
       font: 18px/1.42 Open Sans, San Francisco, Pingfang SC, Hiragano, Helvetica Neue, Microsoft Yahei, sans-serif;
       color: #00869B;
       height: 100%;
     }
-
     header {
       margin: 20px 0;
     }
-
     h2 {
       font-family: Open Sans, Helvetica Neue, sans-serif;
       font-weight: 300;
     }
-
     header .inner {
       display: flex;
       flex-flow: row wrap;
     }
-
     .title {
       text-align: center;
     }
-
     .title svg {
       width: 256px;
       height: 256px;
     }
-
     .info {
       flex-grow: 1;
       flex-basis: 60%;
       align-self: center;
     }
-
     .inner {
       max-width: 680px;
       margin: 0 auto;
       padding: 0 20px;
     }
-
     .shk {
       z-index: 99;
     }
-
     a {
       font-weight: 400;
       text-decoration: none;
@@ -77,36 +67,29 @@
       transition: opacity ease 0.3s;
       padding: 2px;
     }
-
     a:hover {
       opacity: 0.6;
     }
-
-    footer p {
+    footer {
       position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 80px;
+      text-align: center;
+      background-color: #fff;
+      width: 100vw;
+    }
+    footer span {
       font-weight: 300;
       white-space: nowrap;
-      background-color: #fff;
     }
-
     @media (max-width: 680px) {
       header {
         margin: 0;
       }
-
       .title {
         flex-basis: 100%;
       }
-
       .info {
         text-align: center;
-      }
-
-      footer p {
-        bottom: 70px;
       }
     }
   </style>
@@ -144,7 +127,7 @@
     </div>
   </main>
   <footer>
-    <p>made with 💙 by <a href="https://jessieji.com" target="_blank">Jessie Ji</a></p>
+    <span>made with 💙 by <a href="https://jessieji.com" target="_blank">Jessie Ji</a></span>
   </footer>
 </body>
 <script src="./shikwasa.min.js"></script>
