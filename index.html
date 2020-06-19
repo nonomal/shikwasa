@@ -7,7 +7,7 @@
     const time = formatTime(time)
     instance.seek(time)
     instance.play()
-  }</code></pre></div></div></div><div class="feature-main"><p>Share audio progress with query string url.</p><p></p><div class="feature-action">copy <code>shikwasa.js.org/#t=06:05</code> to the address bar of a new browser tab<div class="code"><pre><code>window.onload = () => {
+  }</code></pre></div></div></div><div class="feature-main"><p>Share audio progress with url that has a hash string.</p><p></p><div class="feature-action"><code>shikwasa.js.org/#t=06:05</code> copy the url to a new tab to see the effect<div class="code"><pre><code>window.onload = () => {
     const hash = window.location.hash
     const time = formatTime(hash)
     instance.seek(time)
