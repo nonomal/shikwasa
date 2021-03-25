@@ -7,7 +7,7 @@
     const time = formatTime(href)
     instance.seek(time)
     instance.play()
-  })</code></pre></div></div></div><div class="feature-item_main"><h3 id="seek-control">Sync timestamp</h3><p>Share audio progress with query string url.</p><p></p><div class="feature-action">Copy <code>shikwasa.js.org/#t=06:05</code> to the address bar of a new browser tab to witness the magic.<div class="code"><pre><code>window.onload = () => {
+  })</code></pre></div></div></div><div class="feature-item_main"><h3 id="seek-control">Synced timestamp</h3><p>Share audio progress with query string url.</p><p></p><div class="feature-action">Copy <code>shikwasa.js.org/#t=06:05</code> to the address bar of a new browser tab to witness the magic.<div class="code"><pre><code>window.onload = () => {
     const hash = window.location.hash
     const time = formatTime(hash)
     instance.seek(time)
