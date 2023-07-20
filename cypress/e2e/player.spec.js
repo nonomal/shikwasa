@@ -94,7 +94,7 @@ describe('Player initiation', () => {
         cy.get('.shk-cover').should(
           'have.css',
           'background-image',
-          `url("${Cypress.config().baseUrl + data.customAudio.cover}")`
+          `url("${Cypress.config().baseUrl + '/' + data.customAudio.cover}")`
         )
         cy.get('.shk-time_duration').contains(data.customAudio.duration_display)
         cy.get('.shk-controls').within(() => {
@@ -486,7 +486,7 @@ describe('Audio update behavior', () => {
   const title = 'hello baby'
   it('updates audio when `update` is called', () => {
     shk = new Shikwasa({ audio: { src: data.src } })
-    expect(shk.audio.src).equal(location.origin + '/' + data.src)
+    expect(shk.audio.src).equal(Cypress.config().baseUrl + '/' + data.src)
     cy.get('.shk-title')
       .contains(CONFIG.audioOptions.title)
       .then(() => {
@@ -510,5 +510,25 @@ describe('Audio update behavior', () => {
       cy.get('.shk-title').contains(title)
       expect(shk.audio.paused).to.be.false
     }
+  })
+})
+
+describe('Audio destruction', () => {
+  it('destroys player instance on destruction', () => {
+    shk = new Shikwasa({ audio: { src: data.src } })
+    shk.destroy()
+    expect(document.querySelector('.shk')).to.be.null
+  })
+
+  it('unregisters event listeners from the player', () => {
+    let listenerCalled = false
+    shk = new Shikwasa({ audio: { src: data.src } })
+    // `timeupdate` will be triggered when we follow w3c's best practice
+    // on audio destruction and not unregister event listeners beforehand.
+    shk.on('timeupdate', () => {
+      listenerCalled = true
+    })
+    shk.destroy()
+    expect(listenerCalled).to.be.false
   })
 })

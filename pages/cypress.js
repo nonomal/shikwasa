@@ -1,5 +1,4 @@
-import Shikwasa from '../src/main'
-import Chapter from '../src/chapter'
+import { Player, Chapter } from '../src/main'
 
-window.Shikwasa = Shikwasa
+window.Shikwasa = Player
 window.Chapter = Chapter

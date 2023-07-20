@@ -1,11 +1,7 @@
 node_modules
 .cache
-gh.js
-pages/*
-!pages/public/
-!pages/cypress.html
-!pages/cypress.js
 dist
+public
 
 cypress/screenshots
 cypress/videos

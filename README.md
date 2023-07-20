@@ -63,20 +63,9 @@ Also available on CDN: https://www.jsdelivr.com/package/npm/shikwasa
 ## Usage
 1. include stylesheet and script
 
-   ```html
-    <head>
-      <link rel="stylesheet" href="shikwasa.min.css">
-    </head>
-    <body>
-      <script src="shikwasa.min.js"></script>
-    </body>
-   ```
-
-    If you use module system, import like this instead:
-
     ```javascript
-      import 'shikwasa/dist/shikwasa.min.css'
-      import Shikwasa from 'shikwasa'
+      import 'shikwasa/dist/style.css'
+      import { Player } from 'shikwasa'
     ```
 
 2. Specify a container to inject the player component.
@@ -92,7 +81,7 @@ Also available on CDN: https://www.jsdelivr.com/package/npm/shikwasa
    ```javascript
     // an example with basic init options
 
-    const player = new Shikwasa({
+    const player = new Player({
       container: () => document.querySelector('.element-of-your-choice'),
       audio: {
         title: 'Hello World!',
@@ -101,11 +90,16 @@ Also available on CDN: https://www.jsdelivr.com/package/npm/shikwasa
         src: 'audio.mp3',
       },
     })
+
+    // The library has also exposed a global variable `Shikwasa` in the UMD and IIFE build.
+    // Then the usage would be:
+    const { Player } = window.Shikwasa
+    const player = new Player({ ... })
    ```
 
    Any child nodes inside `container` will be cleared upon the time Shiwkasa mounts.
 
-Here's a [fiddle](https://jsfiddle.net/jessuni/netgvbwy/8/) to kickstart. To use the chapter feature, you need to import the chapter script and stylesheets as well. [View details](#chapters)
+Here's a [fiddle](https://jsfiddle.net/jessuni/netgvbwy/) to kickstart. To use the chapter feature, you need to import the chapter script and stylesheets as well. [View details](#chapters)
 
 ## API
 
@@ -295,7 +289,7 @@ If a [`parser`](#parser) is used, the audio will be requested immediately on pag
 
 ### download
 
-(Optional) Whether the current audio source is download-able. When set to `true`, the player will provide an anchor with `downlaod` attribute and `href` set to `audio.src`. Cross-origin `href` will not prompt download due to anchor's nature, but you can offer an alternative `blob:`, `data:` url or a same-origin direct download link(DDL).
+(Optional) Whether the current audio source is download-able. When set to `true`, the player will provide an anchor with `download` attribute and `href` set to `audio.src`. Cross-origin `href` will not prompt download due to anchor's nature, but you can offer an alternative `blob:`, `data:` url or a same-origin direct download link(DDL).
 
 - type: `string | boolean`
 - default: `false`
@@ -323,12 +317,13 @@ It will read the audio's `title`, `artist`, `duration` and `chapters`, meaning y
 ```
 
 ```javascript
+  import { Player } from 'shikwasa'
   import jsmediatags from 'jsmediatags'
 
-  new Shikwasa({
+  new Player({
     ...
-  parser: jsmediatags,
-  audio: { src: ... },
+    parser: jsmediatags,
+    audio: { src: ... },
   })
 ```
 
@@ -385,11 +380,10 @@ Shikwasa supports chapters display and playback control with the help of its ext
 1. Register the chapter plugin before creating a Shikwasa instance.
 
    ```javascript
-    import Chapter as 'shikwasa/dist/shikwasa.chapter.cjs'
-    import 'shikwasa/dist/shikwasa.chapter.min.css'
+    import { Chapter } from 'shikwasa'
 
-    Shikwasa.use(Chapter)
-    new Shikwasa({...})
+    Player.use(Chapter)
+    const player = new Player({...})
    ```
 
 2. This does not guarantee that the audio will display chapters. To display chapters, you need to provide chapter data to the player.

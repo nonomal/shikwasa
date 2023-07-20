@@ -1,6 +1,10 @@
 import './css/base.css'
-import Shikwasa from './player'
+import './css/chapter.css'
+import Player from './player'
+import Chapter from './chapter'
 
-export default Shikwasa
-/** CONSOLE_MSG */
+/* eslint-disable-next-line */
+CONSOLE_MSG
+
+export { Player, Chapter }
 
